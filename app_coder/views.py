@@ -9,21 +9,35 @@ def inicio(request):
 def bucadorCurso( request):
      
      if request.method == 'POST':
-      
-            curso =  Curso(request.post['curso'],(request.post['camada']))
- 
-            curso.save()
+            
+        curso = request.POST['curso']
 
+        camada = request.POST['camada']
+      
+        cursos =  Curso(curso = curso, camada =camada)
+        
+
+        cursos.save()
            
 
      return render(request, 'app_coder/buscador_curso.html')
+
+ 
+           
 
 
 def bucadorAlumno( request):
      
      if request.method == 'POST':
-      
-            alumno =  Alumno(request.post['nombre'],(request.post['apellido']), (request.post['correo']))
+        
+            nombre = request.POST['nombre']
+
+            apellido = request.POST['apellido']
+
+            correo = request.POST['correo']
+
+
+            alumno =  Alumno(nombre = nombre, apellido = apellido, correo = correo)
  
             alumno.save()
 
