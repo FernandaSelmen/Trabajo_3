@@ -14,7 +14,7 @@ def bucadorCurso( request):
  
             curso.save()
 
-            return render(request, 'app_coder/buscador_curso.html')
+           
 
      return render(request, 'app_coder/buscador_curso.html')
 
@@ -27,7 +27,6 @@ def bucadorAlumno( request):
  
             alumno.save()
 
-            return render(request, 'app_coder/buscador_alumno.html')
 
      return render(request, 'app_coder/buscador_alumno.html')
 
