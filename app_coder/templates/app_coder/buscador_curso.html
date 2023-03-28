@@ -1,0 +1,14 @@
+{% extends 'app_coder/base.html' %}
+{% load static %}
+{% block conteni_que_cambia %}
+        
+<form action="//"    method="post">
+
+    <p> Curso: <input type = "text" name="curso">{% csrf_token %}
+    <p> Camada: <input type = "number" name="camada">
+    <input type = "submit" value="Enviar">
+ </form>   
+
+
+
+{% endblock conteni_que_cambia %}
