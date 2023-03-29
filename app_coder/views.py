@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from app_coder.models import Curso, Alumno, Profesor
 from app_coder.forms import ProfesorForm
+
  
 
 # Create your views here.
@@ -58,5 +59,24 @@ def profesorForms(request):
             miFormulario = ProfesorForm()
  
       return render(request, "app_coder/profeFormulario.html", {"miFormulario": miFormulario})
+
+
+
+
+def buscarProfe(request):
+
+    if request.method == "POST":
+
+        nombre = request.POST.get("nombre")
+        apellido = request.POST.get("apellido")
+
+        profebuscado = Profesor.objects.filter(nombre=nombre, apellido=apellido)
+
+    return render(request, "app_coder/resultadosProfesor.html", {'data': [profebuscado]})
+    #else:
+       # miFormulario = ProfesorForm()
+       # return render(request, "app_coder/resultadosProfesor.html", {"miFormulario": miFormulario})
+
+
 
 
