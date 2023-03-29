@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from app_coder.models import Curso, Alumno
+from app_coder.models import Curso, Alumno, Profesor
+from app_coder.forms import ProfesorForm
+ 
+
 # Create your views here.
 
 def inicio(request):
@@ -30,5 +33,30 @@ def bucadorAlumno( request):
 
      return render(request, 'app_coder/buscador_alumno.html')
 
+
+
+def profesorForms(request):
+ 
+      if request.method == "POST":
+ 
+            miFormulario = ProfesorForm(request.POST) 
+            print(miFormulario)
+ 
+            if miFormulario.is_valid:
+                  informacion = miFormulario.cleaned_data
+
+                  nombre=informacion["nombre"]
+                  apellido = informacion["apellido"]
+                  correo =informacion["correo"]
+                  profesion = informacion["profesion"]
+
+                  profesor = Profesor(nombre= nombre, apellido = apellido, correo = correo, profesion= profesion)
+                  profesor.save()
+
+                  return render(request, "app_coder/profeFormulario.html")
+      else:
+            miFormulario = ProfesorForm()
+ 
+      return render(request, "app_coder/profeFormulario.html", {"miFormulario": miFormulario})
 
 
