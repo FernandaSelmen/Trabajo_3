@@ -1,0 +1,35 @@
+
+{% extends 'app_coder/base.html' %}
+
+{% load static %}
+
+{% block conteni_que_cambia %}
+        
+
+<form action=""    method="POST">
+
+  <p> Nombre: <input type = "text" name="Nombre">
+  <p> Apellido: <input type = "text" name="Apellido">
+
+  <input type = "submit" value="Buscar">
+
+  
+</form> 
+
+
+<h1>Resultados de la búsqueda:</h1>
+
+{% if data %}
+  <ul>
+    {% for profe in data %}
+      <li>{{ profe.nombre }} {{ profe.apellido }} </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No se encontraron profesores que coincidan con los criterios de búsqueda.</p>
+{% endif %}
+
+
+
+
+{% endblock %}
