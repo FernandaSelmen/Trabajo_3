@@ -5,10 +5,11 @@
 
 {% block conteni_que_cambia %}
         
+<h1>Introduce los datos del profesor que deseas buscar:</h1>
 
 <form action=""    method="POST"> {% csrf_token %}
 
-  <p> Nombre: <input type = "text" name="nombre">
+  <p> Nombre: <input type = "text" name="nombre"> <br>
   <p> Apellido: <input type = "text" name="apellido">
 
   <input type = "submit" value="Buscar">
@@ -17,12 +18,15 @@
 </form> 
 
 
-<h1>Resultados de la búsqueda:</h1>
+<H1>Resultados de la búsqueda:</H1>
 
 {% if data %}
   <ul>
     {% for profe in data %}
-      <li>{{ profe.nombre }} {{ profe.apellido }} </li>
+      <li>nombre = {{ profe.nombre }} <br> 
+          apellido = {{ profe.apellido }} <br> 
+          correo = {{ profe.correo }} <br> 
+          profesion = {{ profe.profesion}} </li>
     {% endfor %}
   </ul>
 {% else %}
