@@ -6,10 +6,10 @@
 {% block conteni_que_cambia %}
         
 
-<form action=""    method="POST">
+<form action=""    method="POST"> {% csrf_token %}
 
-  <p> Nombre: <input type = "text" name="Nombre">
-  <p> Apellido: <input type = "text" name="Apellido">
+  <p> Nombre: <input type = "text" name="nombre">
+  <p> Apellido: <input type = "text" name="apellido">
 
   <input type = "submit" value="Buscar">
 

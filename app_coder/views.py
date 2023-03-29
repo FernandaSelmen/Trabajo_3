@@ -13,10 +13,13 @@ def inicio(request):
 def bucadorCurso( request):
      
      if request.method == 'POST':
-      
-            curso =  Curso(request.post['curso'],(request.post['camada']))
+
+            curso = request.POST['curso']
+            camada = request.POST['camada']
+
+            cursos =  Curso(curso = curso, camada = camada)
  
-            curso.save()
+            cursos.save()
 
            
 
@@ -26,8 +29,12 @@ def bucadorCurso( request):
 def bucadorAlumno( request):
      
      if request.method == 'POST':
-      
-            alumno =  Alumno(request.post['nombre'],(request.post['apellido']), (request.post['correo']))
+            
+            nombre = request.POST['nombre']
+            apellido = request.POST['apellido']
+            correo = request.POST['correo']
+
+            alumno =  Alumno(nombre = nombre, apellido = apellido, correo = correo)
  
             alumno.save()
 
@@ -72,10 +79,10 @@ def buscarProfe(request):
 
         profebuscado = Profesor.objects.filter(nombre=nombre, apellido=apellido)
 
-    return render(request, "app_coder/resultadosProfesor.html", {'data': [profebuscado]})
-    #else:
+        return render(request, "app_coder/resultadosProfesor.html", {'data': profebuscado})
+    
        # miFormulario = ProfesorForm()
-       # return render(request, "app_coder/resultadosProfesor.html", {"miFormulario": miFormulario})
+    return render(request, "app_coder/resultadosProfesor.html", {})
 
 
 
