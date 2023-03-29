@@ -2,11 +2,12 @@
 {% load static %}
 {% block conteni_que_cambia %}
         
-<form action="//"    method="POST"> {% csrf_token %}
+<form action=""    method="POST"> {% csrf_token %}
+    <h1>Cargue los datos del alumno:</h1><br> 
 
-    <p> Nombre: <input type = "text" name="Nombre">
-    <p> Apellido: <input type = "text" name="Apellido">
-    <p> Correo: <input type = "email" name="Correo">
+    <p> Nombre: <input type = "text" name="nombre"><br> 
+    <p> Apellido: <input type = "text" name="apellido"><br> 
+    <p> Correo: <input type = "email" name="correo"><br> 
 
     <input type = "submit" value="Enviar">
 
