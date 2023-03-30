@@ -2,17 +2,16 @@
 {% load static %}
 {% block conteni_que_cambia %}
         
-<form action=""    method="POST"> {% csrf_token %}
-    <h1>Cargue los datos del alumno:</h1><br> 
 
-    <p> Nombre: <input type = "text" name="nombre"><br> 
-    <p> Apellido: <input type = "text" name="apellido"><br> 
-    <p> Correo: <input type = "email" name="correo"><br> 
+    <form action=""    method="POST">{% csrf_token %}
+        <table>
+             <h1>Cargue los datos del Alumno:</h1>
+            {{ miFormulario.as_table }}
+    
+            <table>
+        <input type = "submit" value="Enviar">
+     </form> 
 
-    <input type = "submit" value="Enviar">
-
- </form>   
+    {% endblock conteni_que_cambia %}
 
 
-
-{% endblock conteni_que_cambia %}

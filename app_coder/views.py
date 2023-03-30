@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from app_coder.models import Curso, Alumno, Profesor
-from app_coder.forms import ProfesorForm
+from app_coder.models import Curso, Alumno, Profesor, Entregables
+from app_coder.forms import ProfesorForm, AlumnoForm, EntregablesForm
 
  
 
@@ -28,18 +28,30 @@ def bucadorCurso( request):
 
 def bucadorAlumno( request):
      
-     if request.method == 'POST':
-            
-            nombre = request.POST['nombre']
-            apellido = request.POST['apellido']
-            correo = request.POST['correo']
-
-            alumno =  Alumno(nombre = nombre, apellido = apellido, correo = correo)
+      if request.method == "POST":
  
-            alumno.save()
+            miFormulario = AlumnoForm(request.POST) 
+            print(miFormulario)
+ 
+            if miFormulario.is_valid:
+                  informacion = miFormulario.cleaned_data
 
+                  nombre=informacion["nombre"]
+                  apellido = informacion["apellido"]
+                  correo =informacion["correo"]
+                 
 
-     return render(request, 'app_coder/buscador_alumno.html')
+                  alumno = Alumno(nombre= nombre, apellido = apellido, correo = correo)
+
+                  alumno.save()
+
+                  return render(request, "app_coder/buscador_alumno.html")
+      else:
+            miFormulario = AlumnoForm()
+ 
+      return render(request, "app_coder/buscador_alumno.html", {"miFormulario": miFormulario})
+
+     
 
 
 
@@ -86,4 +98,34 @@ def buscarProfe(request):
 
 
 
+     
 
+def entrega(request):
+
+      if request.method == "POST":
+ 
+            miFormulario = EntregablesForm(request.POST) 
+            print(miFormulario)
+ 
+            if miFormulario.is_valid:
+
+                  informacion = miFormulario.cleaned_data
+
+                  nombre=informacion["nombre"]
+                  apellido = informacion["apellido"]
+                  proyecto =informacion["proyecto"]
+                  hora =informacion["hora"]
+                 
+
+                  entregalo = Entregables(nombre= nombre, apellido = apellido, proyecto = proyecto, hora = hora)
+                  entregalo.save()
+
+                  return render(request, "app_coder/entregacion.html")
+      else:
+            miFormulario = EntregablesForm()
+ 
+      return render(request, "app_coder/entregacion.html", {"miFormulario": miFormulario})
+    
+       
+  
+   
