@@ -25,6 +25,7 @@ def bucadorCurso( request):
 
      return render(request, 'app_coder/buscador_curso.html')
 
+            
 
 def bucadorAlumno( request):
      
