@@ -4,7 +4,7 @@ from app_coder.views import inicio , bucadorCurso, bucadorAlumno, profesorForms,
 
 
 urlpatterns = [
-    path('index/', inicio, name = 'inicio' ),
+    path('', inicio, name = 'inicio' ),
 
     path('buscador_curso/', bucadorCurso, name = 'Curso' ),
 
