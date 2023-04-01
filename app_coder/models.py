@@ -41,4 +41,12 @@ class Entregables(models.Model):
 
     
     
-    
+class After( models.Model):
+     
+     nombre_del_after = models.CharField(max_length=30)
+     tema_a_tocar = models.CharField(max_length=200)
+     hora_de_inicio= models.TimeField()
+     zoom = models.URLField()
+     def __str__(self):
+
+        return f'Nombre: {self.nombre_del_after} - Apellido: {self.tema_a_tocar} - Proyecto: {self.hora_de_inicio} -Hora: {self.zoom}'
