@@ -1,0 +1,22 @@
+
+{% extends 'app_coder/base.html' %}
+
+{% load static %}
+
+{% block conteni_que_cambia %}
+        
+
+
+
+  
+<form action=""    method="POST">{% csrf_token %}
+  <table>
+       <h1>Cargue los datos del After:</h1>
+      {{ formu.as_table }}
+
+      <table>
+  <input type = "submit" value="Enviar">
+</form> 
+
+
+{% endblock %}

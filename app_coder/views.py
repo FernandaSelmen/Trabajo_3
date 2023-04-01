@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from app_coder.models import Curso, Alumno, Profesor, Entregables
-from app_coder.forms import ProfesorForm, AlumnoForm, EntregablesForm
+from app_coder.models import Curso, Alumno, Profesor, Entregables, After
+from app_coder.forms import ProfesorForm, AlumnoForm, EntregablesForm, AfterForm
 
  
 
@@ -127,6 +127,32 @@ def entrega(request):
  
       return render(request, "app_coder/entregacion.html", {"miFormulario": miFormulario})
     
-       
+
+def after(request):
+
+      if request.method == "POST":
+ 
+            formu = AfterForm(request.POST) 
+            print(formu)
+ 
+            if formu.is_valid:
+
+                  informacion = formu.cleaned_data
+
+                  nombre=informacion["nombre"]
+                  tema = informacion["tema"]
+                  hora =informacion["hora"]
+                  zoom =informacion["zoom"]
+                 
+
+                  aff = After(nombre= nombre, tema = tema, hora = hora, zoom = zoom)
+                  aff.save()
+
+                  return render(request, "app_coder/after.html")
+      else:
+            formu = AfterForm()
+ 
+      return render(request, "app_coder/after.html", {"formu": formu})
+    
   
    

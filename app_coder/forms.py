@@ -27,5 +27,10 @@ class EntregablesForm(forms.Form):
     proyecto = forms.CharField(max_length=60)
     hora = forms.TimeField()
 
+class AfterForm(forms.Form):
     
-
+    nombre = forms.CharField(max_length=30)
+    tema = forms.CharField(max_length=20)
+    hora = forms.TimeField()
+    zoom = forms.URLField()
+   

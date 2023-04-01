@@ -39,6 +39,14 @@ class Entregables(models.Model):
            
          return f'Nombre: {self.nombre} - Apellido: {self.apellido} - Proyecto: {self.proyecto} -Hora: {self.hora}'
 
+class After(models.Model):
     
+    nombre = models.CharField(max_length=30)
+    tema = models.CharField(max_length=20)
+    hora = models.TimeField()
+    zoom = models.URLField()
+    def __str__(self):
+           
+         return f'Nombre: {self.nombre} - tema: {self.tema} - Hora: {self.hora} -Zoom: {self.zoom}'
     
     
